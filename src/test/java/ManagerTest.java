@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ManagerTest {
     Repository repo = new Repository();
     Manager man = new Manager(repo);
+
     @BeforeEach
     public void init() {
         man.add("1");
