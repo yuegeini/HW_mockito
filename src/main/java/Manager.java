@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 
 public class Manager {
     private int limit;
-    Repository repo;
+    private String[] filmList = new String[0];
 
-    Manager(Repository repo) {
-        this.repo = repo;
+    Manager() {
         limit = 5;
     }
 
@@ -14,18 +12,39 @@ public class Manager {
 //        limit = lim;
 //    }
     public void add(String name) {
-        repo.save(name);
+
+        String[] tmp = new String[filmList.length + 1];
+        for (int i = 0; i < filmList.length; i++) {
+            tmp[i] = filmList[i];
+        }
+        tmp[filmList.length] = name;
+        filmList = tmp;
     }
 
     public void remove(String name) {
-        repo.removeByName(name);
+
+        String[] tmp = new String[filmList.length - 1];
+        int i = 0;
+        for (String el : filmList) {
+            if (el != name) {
+                tmp[i] = el;
+                i++;
+            }
+        }
+        filmList = tmp;
     }
 
     public String[] getAll() {
-        return repo.getAll();
+        return filmList;
     }
 
     public String[] findLimit() {
-        return repo.getLastLim(limit);
+        String[] tmp = new String[limit];
+        int counter = 0;
+        for (int i = filmList.length - 1; i > filmList.length - 6; i--) {
+            tmp[counter] = filmList[i];
+            counter++;
+        }
+        return tmp;
     }
 }

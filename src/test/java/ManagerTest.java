@@ -1,10 +1,7 @@
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ManagerTest {
-    Repository repo = new Repository();
-    Manager man = new Manager(repo);
+    Manager man = new Manager();
 
     @BeforeEach
     public void init() {
@@ -16,16 +13,6 @@ class ManagerTest {
         man.add("6");
         man.add("7");
     }
-//    @AfterEach
-//    public void del() {
-//        man.remove("1");
-//        man.remove("2");
-//        man.remove("3");
-//        man.remove("4");
-//        man.remove("5");
-//        man.remove("6");
-//        man.remove("7");
-//    }
 
     @Test
     void addTest() {
