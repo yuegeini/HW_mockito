@@ -7,6 +7,10 @@ public class Manager {
         limit = 5;
     }
 
+    Manager(int limit) {
+        this.limit = limit;
+    }
+
     //    Manager(Repository repo, int lim) {
 //        this.repo = repo;
 //        limit = lim;
@@ -38,10 +42,12 @@ public class Manager {
         return filmList;
     }
 
-    public String[] findLimit() {
-        String[] tmp = new String[limit];
+    public String[] findLast() {
+        int len = limit;
+        if (limit > filmList.length) len = filmList.length;
+        String[] tmp = new String[len];
         int counter = 0;
-        for (int i = filmList.length - 1; i > filmList.length - 6; i--) {
+        for (int i = filmList.length - 1; i > filmList.length - 6 && i >= 0; i--) {
             tmp[counter] = filmList[i];
             counter++;
         }

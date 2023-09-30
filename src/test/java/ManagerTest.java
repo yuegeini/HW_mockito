@@ -2,6 +2,7 @@ import org.junit.jupiter.api.*;
 
 class ManagerTest {
     Manager man = new Manager();
+    Manager man3 = new Manager(3);
 
     @BeforeEach
     public void init() {
@@ -12,6 +13,9 @@ class ManagerTest {
         man.add("5");
         man.add("6");
         man.add("7");
+
+        man3.add("1");
+        man3.add("2");
     }
 
     @Test
@@ -53,10 +57,31 @@ class ManagerTest {
     }
 
     @Test
-    void findLimitTest() {
+    void findLastTest() {
 //        Manager limMan = new Manager(repo, 2);
         String[] expected = {"7", "6", "5", "4", "3"};
-        String[] actual = man.findLimit();
+        String[] actual = man.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+
+    @Test
+    void findLastTwoTest() {
+//        Manager limMan = new Manager(repo, 2);
+        String[] expected = {"2", "1"};
+        String[] actual = man3.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    void findLastThreeTest() {
+//        Manager limMan = new Manager(repo, 2);
+
+        String[] expected = {"3", "2", "1"};
+        man3.add("3");
+        String[] actual = man3.findLast();
         Assertions.assertArrayEquals(expected, actual);
 
     }
